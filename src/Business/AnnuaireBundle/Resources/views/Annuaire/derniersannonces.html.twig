@@ -1,0 +1,29 @@
+<div class="box-stand">
+
+<h4>Dernières Annonces</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr>
+    <td>Photo</td>
+    <td>Annonce</td>
+    <td>Région</td>
+  </tr>
+
+  {%for ann in listannonces %}
+  <tr><td style="width: 10%;"> <a href="{{path('annuaire_ficheannonce',{'id':ann.id})}}" title="">
+           {%if ann.path=="" %} 
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="" style="width:120px; height:60px;" />
+        </a>
+          {%else%}
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/uploads/annonces/images/")}}{{ann.path}}" alt="" style="width:120px; height:60px;" />
+        </a>      
+                 {%endif%} 
+              </td><td style="width: 60%;">
+            <a href="{{path('annuaire_ficheannonce',{'id':ann.id})}}" title=""><strong itemprop="name">{{ann.titre}}</strong></a>
+                <br>publier le : {{ann.datepublication|date('d/m/Y')}} </td>   
+<td style="width: 30%;">{{ann.lieu}}</td>
+ </tr>
+{%endfor%}
+    
+    </table>
+
+</div> 

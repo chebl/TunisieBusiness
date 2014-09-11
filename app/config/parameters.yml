@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: tunisiebusiness
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: chebl.mahmoud@gmail.com
+    mailer_password: septembre89
+    locale: fr
+    secret: 3581d6f64bdea4becd3e8ae1776426c3234a4b2d

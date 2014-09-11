@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block slider %}
+{% endblock %}
+{% block body %}
+
+ <div id="content">
+        <!--Breadcrumb Part Start-->
+        <div class="breadcrumb"> <a href="{{ path('annuaire_homepage') }}">Home</a> &raquo; <a href="#">Article</a> </div>
+        <!--Breadcrumb Part End-->
+ 
+      <h2>Article >> Create</h2>
+<ul>
+    <div align="right">
+        <a class="btn-icon btn-grey btn-plus" href="{{ path('annuaire_articlepage') }}">
+            Return to list
+        </a>
+    </div>  
+</ul>
+
+<form action="{{ path('annuaire_articlepage') }}" method="post" {{ form_enctype(form) }}>
+     {{ form_errors(form) }}
+      <table class="form">
+          <tbody>   
+           
+               <tr>
+                  <td class="col2">{{ form_label(form.subCategory, "Sous category") }}</td>
+                  <td class="col2">{{ form_widget(form.subCategory) }}</td>  
+              </tr>
+              
+              <tr>
+                  <td class="col2">{{ form_label(form.title, "Title") }}</td>
+                  <td class="col2">{{ form_widget(form.title) }}</td>  
+              </tr>
+              <tr>
+                  <td class="col2">{{ form_label(form.description, "Description") }}</td>
+                  <td class="col2">{{ form_widget(form.description) }}</td>  
+              </tr>
+          
+            
+              <tr>
+                  <td class="col2">{{ form_label(form.media, "Media") }}</td>
+                  <td class="col2">{{ form_widget(form.media) }}</td>  
+              </tr>
+             
+              
+          </tbody>          
+    </table>
+      <div style="display:none;">{{ form_rest(form) }}</div>
+     <div align="left">
+        <button class="btn btn-blue" type="submit">Create</button>
+        </div>
+</form>
+      </div>
+      <!--Middle Part End-->
+      <div class="clear"></div>
+    </div>
+  </div> 
+  </div>
+  
+
+  {% endblock %}

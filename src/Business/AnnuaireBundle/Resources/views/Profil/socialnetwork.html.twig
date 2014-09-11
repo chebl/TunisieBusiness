@@ -1,0 +1,96 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+{{parent()}}
+
+
+{%endblock%}
+
+{%block body%}
+
+
+<div class="grid_1"> 
+
+<div class="box-stand">
+<h4>R&eacute;seaux Sociaux</h4>
+<div class="descbull">
+Liez vos pages vous repr&eacute;sentant sur les r&eacute;seaux sociaux afin que les visiteurs puissent aimer, partager ou vous suivre sur Facebook, Twitter, Google+, etc...
+</div>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png); border-bottom:solid 1px #000;">
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<form id="pro_form1" method="post" action="{{path('annuaire_socialnetwork')}}" {{form_enctype(form)}}>
+
+<fieldset>
+<br>
+<label><span>{{form_label(form.urlfb)}}</span>
+{#<input type="text" name="fb" id="fb" value="" /#}
+     {{form_widget(form.urlfb,{'attr': {'id':'fb','name':'fb'}})}}
+</label>
+<br>
+<label><span>{{form_label(form.urltwitter)}}</span>
+{#<input type="text" name="twi" id="twi" value="" />#}
+   {{form_widget(form.urltwitter,{'attr': {'id':'twi','name':'twi'}})}}        
+
+</label>
+<br>
+<label><span>{{form_label(form.urlyoutube)}}</span>
+{#<input type="text" name="yout" id="yout" value="" />#}
+   {{form_widget(form.urlyoutube,{'attr': {'id':'yout','name':'yout'}})}}       
+</label>
+<br>
+<label><span>{{form_label(form.urllinkedin)}}</span>
+{#<input type="text" name="linkedin" id="linkedin" value="" />#}
+         {{form_widget(form.urllinkedin,{'attr': {'id':'linkedin','name':'linkedin'}})}}  
+</label>
+<br>
+<label><span>{{form_label(form.urlgoogleplus)}}</span>
+{#<input type="text" name="goog" id="goog" value="" />#}
+     {{form_widget(form.urlgoogleplus,{'attr': {'id':'goog','name':'goog'}})}}  
+</label>
+<br>
+<label><span>{{form_label(form.urlsiteweb)}}</span>
+{{form_widget(form.urlsiteweb,{'attr': {'id':'sitew','name':'sitew'}})}}
+</label>
+<div class="btns"><input name="modifsoc" id="submit" type="submit" value="Enregistrer" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+
+<div class="clear"></div>
+</fieldset>
+    {{form_rest(form)}}
+</form>
+</div>	<!--coordonnées Personnel-->
+
+<div class="clear"></div>
+
+</div> <!--End include left-->
+
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+
+{%endblock%}

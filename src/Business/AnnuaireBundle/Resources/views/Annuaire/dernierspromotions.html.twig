@@ -1,0 +1,25 @@
+<div class="box-stand">
+
+    <h4>Dernières Promotions</h4>
+<table style="width:100%;" class="tabsoc">
+
+
+  {%for prom in listpromotions %}
+  <tr><td style="width: 10%;"> <a href="{{path('annuaire_fichepromotion',{'id':prom.id})}}" title="">
+           {%if prom.path=="" %} 
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="" style="width:120px; height:60px;" />
+        </a>
+          {%else%}
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/uploads/promotions/images/")}}{{prom.path}}" alt="" style="width:120px; height:60px;" />
+        </a>      
+                 {%endif%} 
+              </td><td style="width: 60%;">
+            <a href="{{path('annuaire_fichepromotion',{'id':prom.id})}}" title=""><strong itemprop="name">{{prom.titre}}</strong></a>
+                <br>publier le : {{prom.datepublication|date('d/m/Y')}}
+                <br>Par : {{prom.promoteur.nomsociete}}              </td>   
+ </tr>
+{%endfor%}
+    
+    </table>
+    
+</div> 

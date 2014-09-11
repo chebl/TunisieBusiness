@@ -1,0 +1,113 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+
+
+ 
+{%block body %}
+<div class="grid_1">
+<div class="box-stand">
+{%if local==""%}
+        <h4>Recherche {{motcle}} </h4>
+        {%else%}
+        
+    <h4>Recherche {{motcle}} En  {{local}} </h4>
+{%endif%}
+    <table style="width:100%;" class="tabsoc">
+  {%if j==0 %}
+     <tr>
+<td colspan="2" style="background-color: rgb(252, 233, 233); background-position: initial initial; background-repeat: initial initial;">
+<img src="{{asset('bundles/businessannuaire/images/icons/error.png')}}" alt="error"/>
+Aucun résultat correspond à votre recherche !
+</td>
+</tr>   
+    {%else%}
+    <tr>
+    <td>Soci&eacute;t&eacute;</td>
+    <td>Adresse</td>
+    <td>Domaine d'activit&eacute;</td>
+  </tr>
+
+  {%for soc in listsocietes %}
+  <tr><td style="width: 10%;"> <a href="{{path('annuaire_fichesociete',{'id':soc.id})}}" title="">
+            <img itemprop="image" src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="" style="width:120px; height:60px;" />
+        </a></td><td style="width: 60%;">
+            <a href="{{path('annuaire_fichesociete',{'id':soc.id})}}" title=""><strong itemprop="name">{{soc.nomsociete}}</strong>
+                <br>{{soc.adresse}} {{soc.codepostal}} {{soc.ville}}<br>T&eacute;l&eacute;phone : </a></td>   
+<td style="width: 30%;">{{soc.specialite}}</td>
+ </tr>
+
+{%endfor%}
+ {%endif%}    
+    </table>
+</div>
+    </div>
+
+<!--include right-->
+<div class="grid_2">
+    
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+
+    <div class="clear"></div>
+</div> <!--Annonceurs-->
+
+<div class="box-pub">
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Carée-->
+<div class="box-pub2">
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+<!-- Place this tag where you want the widget to render. -->
+<div class="g-page" data-width="250" data-href="https://plus.google.com/105367995533699353729" data-showtagline="false" data-rel="publisher"></div>
+
+<!-- Place this tag after the last widget tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'fr'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '../apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+				<!-- Start photoslider-mini -->
+				<div class="sliderkit photoslider-maxi" style="width:252px;height:600px;">
+					<div class="sliderkit-panels">
+						
+
+						
+						<div class="sliderkit-panel">
+						
+                                                </div>
+						<div class="sliderkit-panel">
+								</div>
+					</div>
+				</div>
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Large-->
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+<div class="box-actualite fleft">
+
+</div> <!--Dérniers Promotions-->
+
+<div class="box-actualite fright">
+</div> <!--Dérniers annonces-->
+
+<div class="clear"></div>
+
+</div>
+
+{%endblock%}

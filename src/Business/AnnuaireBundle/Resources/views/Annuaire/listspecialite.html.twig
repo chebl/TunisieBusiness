@@ -1,0 +1,7 @@
+<label><span>Spécialité société :</span>
+<select name="listspecialiteann" id="scateg" class="validate[required]"> 
+                           {%for spec in specialite %}
+                                   <option value="{{spec.id}}">{{spec.nom}}</option>
+                                {%endfor%}   
+             </select>              
+ 						

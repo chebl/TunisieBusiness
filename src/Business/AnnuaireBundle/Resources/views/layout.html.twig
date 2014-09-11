@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8">
+<title>Tunisie Business : L’annuaire des professionnels Tunisiens</title>
+<meta name="Description" content="Portail e-Business Tunisie! Inscription 100 % Gratuite, Espace professionnelle complet. D&eacute;couvrez les soci&eacute;t&eacute;s, les produits, les promotions , les annonces,...">
+<meta name="Keywords" content="tunisie business, annuaire tunisienne, tunisie annonce, tunisie annonces, tunisie travail, tunisie actualité, annuaire professionnel tunisie, &eacute;conomique tunisie,entreprise tunisie,soci&eacute;t&eacute; tunisie, Soci&eacute;t&eacute; informatique, industriel, Agro-alimentaire, Art et Culture, Commerce et Economie, Communication, Droit, Education et Formation,Finance, Immobilier et Bâtiment, Industrie et Energie, Informatique et Internet, Sant&eacute; et Bien être, Sciences et Technologies, Services, Sport, Textile et Mode, Tourisme et Loisirs, Transport">
+<meta name="author" content="chebl.mahmoud">
+<link rel="icon" href="{{asset("bundles/businessannuaire/images/favicon.ico")}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{asset("bundles/businessannuaire/images/favicon.ico")}}" type="image/x-icon">
+{%block stylesheets%}
+
+<link rel="stylesheet" type="text/css" media="screen" href="{{asset("bundles/businessannuaire/css/style.css")}}">
+<link rel="stylesheet" href="{{asset("bundles/businessannuaire/mod_login/css/style.css")}}" /><!--cnx-->
+
+<link type="text/css" href="{{asset("bundles/businessannuaire/css/ui-lightness/jquery-ui-1.8.17.custom.css")}}" rel="stylesheet" /><!--Recherche-->
+<!--Form Validator-->
+{#
+<link rel="stylesheet" href="{{asset("bundles/businessannuaire/includes/formValidator/css/validationEngine.jquery.css")}}" type="text/css" media="screen" title="no title">
+<link rel="stylesheet" href="{{asset("bundles/businessannuaire/includes/formValidator/css/template.css")}}" type="text/css" media="screen" title="no title">
+<link href="{{asset("bundles/businessannuaire/includes/msgBox/Styles/msgBoxLight.css")}}" rel="stylesheet" type="text/css"><!--MsgBox-->
+<link rel="stylesheet" href="{{asset("bundles/businessannuaire/autocomplete/themes/base/jquery.ui.all.css")}}"><!--autocomplite-->
+<link rel="stylesheet" type="text/css" href="{{asset("bundles/businessannuaire/lib/css/sliderkit-core.css")}}" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="{{asset("bundles/businessannuaire/lib/css/sliderkit-demos.css")}}" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="{{asset("bundles/businessannuaire/lib/css/sliderkit-site.css")}}" media="screen, projection" />	<!--slider kit css-->
+#}
+{%endblock%}
+                <!--Main-->
+{%block javascripts%}
+{#
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/script.js")}}"></script>
+
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/superfish.js")}}"></script>
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/jquery-ui-1.8.17.custom.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/jquery.ui.totop.js")}}"></script><!--to top js-->
+<!--Form Validator-->
+#}
+<script src="{{asset("bundles/businessannuaire/includes/formValidator/js/jquery.js")}}" type="text/javascript"></script>	
+{#
+<script src="{{asset("bundles/businessannuaire/includes/formValidator/js/jquery.validationEngine-fr.js")}}" type="text/javascript"></script>  
+<script src="{{asset("bundles/businessannuaire/includes/formValidator/js/jquery.validationEngine.js")}}" type="text/javascript"></script>
+<!--ASK-->
+#}
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/jconfirmaction.jquery.js")}}"></script>
+
+<script src="{{asset("bundles/businessannuaire/includes/msgBox/Scripts/jquery.msgBox.js")}}" type="text/javascript"></script><!--MsgBox-->
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/js/ajax-functions.js")}}"></script><!--ajax-functions-->
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		JQFUNCTIONS.sel();
+	});
+</script>
+{#
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/lib/js/jquery/jquery.easing.1.3.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/lib/js/jquery/jquery.mousewheel.min.js")}}"></script>
+<script type="text/javascript" src="{{asset("bundles/businessannuaire/lib/js/sliderkit/jquery.sliderkit.1.8.min.js")}}"></script>
+<script type="text/javascript">
+	$(window).load(function(){ //$(window).load() must be used instead of $(document).ready() because of Webkit compatibility				
+		
+		// Photo slider > Minimal
+		$(".photoslider-mini").sliderkit({
+			autospeed:6000,
+			panelbtnshover:true,
+			circular:true
+		})
+		$(".photoslider-maxi").sliderkit({
+			autospeed:4000,
+			panelbtnshover:true,
+			circular:true
+		});
+		
+		
+	});	
+</script>	<!-- Slide Right-->
+ #}
+ <!--Connexion-->
+<script src="{{asset("bundles/businessannuaire/mod_login/js/login.js")}}"></script> <!--Connexion-->
+{#
+<script src="{{asset("bundles/businessannuaire/autocomplete/ui/jquery.ui.core.js")}}"></script>
+<script src="{{asset("bundles/businessannuaire/autocomplete/ui/jquery.ui.widget.js")}}"></script>
+<script src="{{asset("bundles/businessannuaire/autocomplete/ui/jquery.ui.position.js")}}"></script>
+<script src="{{asset("bundles/businessannuaire/autocomplete/ui/jquery.ui.autocomplete.js")}}"></script>
+<script>
+$(function() {
+	var availableTags = [
+	"Ariana","Béja","Ben Arous","Bizerte","Gabès","Gafsa","Jendouba","Kairouan","Kasserine","Kébili","Kef","Mahdia","Manouba","Médenine","Monastir","Nabeul","Sfax","Sidi Bouzid","Siliana","Sousse","Tataouine","Tozeur","Tunis","Zaghouan",	];
+	var nomTags = [
+	"Associations","Journaux","Magazines et Revues","Manifestations et Salons","Antiquité","Fondation","Agriculture","Boissons-Jus-Eaux","Conditionnement","Confiserie & Chocolaterie","Conserves & Vinaigres","Elevage","Épices","Equipements et Matériaux","Fruits et légumes","Grains et Céréales","Huiles","Produits Diététiques et Biologiques","Pâtes alimentaires","Pâtisserie","Poissons et Fruits de mer","Produits laitiers","Services-Import-Export","Traiteurs","Volailles, Viandes et charcuteries","Viticulture","Architectes","Architectes d'intérieur","Artisanat","Artistes","Décoration","Galeries et Expositions","Histoire","Musique","Poterie","Ascenseurs et Monte-charges","Auto - Pièces de rechange & Accessoires","Bois et matériaux de construction","Centres d'appels","Commerce international","Distribution","Articles Ménagers - Electroménager","Equipement Hôtelier et Frigorifique","Equipement Industriel","Fourniture scolaire & bureautique","Métaux","Chambre de Commerce","Meuble et Ameublement","Outillage","Quincaillerie","Affiches","Agences événementielles","Agences de communication","Arts graphiques","Imprimeries - Design","Photographie et Audiovisuel","Production cinématographique","Publicité","Avocats","Expertise","Huissiers","Notaires","Bureau de formation","Centre culturel","Centre de formation","Cours & Soutien scolaire","Jardins d'enfants","Garderies","Librairies - Maisons d'édition","Livres & Revues","Maison de jeunes","Universités"," Assurances","Banques","Comptables","Factoring","Intérmédiaires en bourse","Leasing","Recouvrement","Solutions bancaires","Agences immobilières","Bâtiment - Construction","Céramique & Sanitaire","Cimenterie et Briqueterie","Isolation et Aménagement","Marbrerie - Carrelages","Menuiserie","Piscines","Portes & Fenêtres","Promotions immobilières","Travaux Divers et/ou Publics","Techno-chimiques","Construction métallique","Travaux électriques","Emballage","Energie et matières premières","Environnement","Flexibles & Raccords","Fonderies","Hydraulique & Mécanique","Lubrifiants","Maintenance Industrielle","Mesure et précision","Mousse et Matelas","Papier et Carton","Peinture","Plastique & Caoutchouc","Produits d'entretien","Sidérurgie & Métallurgie","Verre","Web","Serveurs d'accès","Logiciels","Publinet","Réseaux - Câblage","Vente & Maintenance matériels","Webmarketing","Imprimantes & Cartouches","Ambulances","Chirurgie","Cliniques","Coiffure & Esthétique","Cosmétique","Diététique","Kinésithérapie","Laboratoires","Médecine","Matériel médical","Optique","Orthophonie","Paramédical","Produits pharmaceutiques","Relaxation","Thermalisme"," Automatisme","Biologie","Bureau d'études en architecture","Bureau d'études techniques","Réseaux - GPS","Centres de recherches","Chimie","Electronique","Géométrie","Ingénierie","Robotique","Télécommunication","Téléphonie","Télésurveillance","Topographie","Auto-Ecoles","Bureau d'études et conseils","Chauffage & Climatisation","Consulting","Garages - Equipement & Entretien","Gardiennage","Jardinage","Protection Incendies","Services aux entreprises","Services aux particuliers","Services pétroliers","Traduction","Salles de sport","Equipements","Produits et accessoires"," Accessoires","Broderie","Chaussures","Industrie textile","Lingerie","Maroquinerie","Prêt à porter","Pressings","Stylisme & Modélisme","Agences de voyages","Casinos","Centre de loisirs","Hôtels","Plongée","Restaurants","Salons de thé","Salles de Fêtes","Café"," Chantiers Navals","Location Engins","Location Véhicules","Manutention","Transit","Transport aérien","Transport maritime","Transport routier","Sécurité","Fabrication de ressorts","intermédiaire d'échange commercial","Espace traditionnelle","Divers Services","Assistance-Depannage-Remorquage","Assemblage-Câblage","MICE (Meetings, Incentives, Congres & Events)","Export & Import","Fabrication des articles scolaires et bureautiques","Migration","Moteurs","Cabinet","Cadeaux","Bateaux","Verres - Glaces","Matières premières textiles","Tissus - Coton - Laine","Couturière","Muséum","Audioconférences","Assistance Technique","Certifications, marques et brevets","Inspection, Contrôle, Analyse","Administration - Base de Données","Audit, Conseil & Conduite de projets","Conception et développement","Formations","Expertise et Conseil","Investissement ","Ressources Humaines - Recrutement","Biscuiterie","Fruits secs","Café","Traitements de l'eau","Chaudronnerie","Carburants","Plombier","Nettoyage","Ameublement de jardin","Enseigne lumineuses","Clôtures de chantier","Alluminum","Recyclage","Polystyrène","Boutique","Marketing","Parfumerie","TV et Radio","Boulangerie","Meunerie","Joints, Services pour la pneumatique","Électricien","Réfrigération Industrielle","Colle et Dérivés","Administration et organismes","Audit, Conseil en droit",	"Auto",
+	];
+	$( "#local" ).autocomplete({
+		source: availableTags
+	});
+	$( "#motcle" ).autocomplete({
+		source: nomTags
+	})
+});
+</script> <!--Autocomplete js-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42887028-1', 'tunisie-business.net');
+  ga('send', 'pageview');
+</script> <!--Google Analytique-->
+<script src="http://static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100681859); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="../in.getclicky.com/100681859ns.gif" /></p></noscript>
+<script>
+  (function() {
+    var cx = '001671118801791239871:eti1lelaieu';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+#}
+<script type="text/javascript">
+function remplirsouscategorie(categ,souscateg)
+     {
+
+   
+  
+   var input2 = "categ="+categ ;
+  
+  souscateg.html("<img src='{{asset('bundles/businessannuaire/images/loader.gif')}}'>");        
+    
+     $.post("{{path('annuaire_souscategories')}}", input2 , function(theResponse){
+ 
+ souscateg.html(theResponse);
+  
+});
+ 
+     return false;
+    }			  
+
+function remplirspecialite(domaine,spec)
+     {
+
+   
+  
+   var input2 = "domaine="+domaine ;
+  
+    
+     $.post("{{path('annuaire_specialites')}}", input2 , function(theResponse){
+         
+    spec.html(theResponse);
+  
+});
+
+     return false;
+    }			  
+
+
+
+</script>
+
+{%endblock%}
+</head>
+
+
+<body>
+{%block header%}
+ 
+        <div id="widget-header">
+  {%block login %}
+  {{ render(controller('BusinessAnnuaireBundle:Annuaire:login'))}}   
+ {%endblock%}               
+
+<div id="social_networks-3" class="social_networks_widget">		
+<ul class="social-networks">
+<li class="display-icons">
+<a rel="external" title="twitter"  href="https://twitter.com/TunisieBusiness" target="_blank">
+<img src="{{asset("bundles/businessannuaire/images/icons/twitter.png")}}" alt="twitter TunisieBusiness">
+<img src="{{asset("bundles/businessannuaire/images/icons/twitter-hr.png")}}" class="hr-img" alt="twitter TunisieBusiness"></a></li>
+<li class="display-icons">
+<a rel="external" title="facebook"  href="https://www.facebook.com/TunisieBusiness" target="_blank">
+<img src="{{asset("bundles/businessannuaire/images/icons/facebook.png")}}" alt="facebook TunisieBusiness">
+<img src="{{asset("bundles/businessannuaire/images/icons/facebook-hr.png")}}" class="hr-img" alt="facebook TunisieBusiness"></a></li>
+<li class="display-icons">
+<a rel="external" title="google"  href="https://plus.google.com/u/0/105367995533699353729" target="_blank">
+<img src="{{asset("bundles/businessannuaire/images/icons/google.png")}}" alt="google plus TunisieBusiness">
+<img src="{{asset("bundles/businessannuaire/images/icons/google-hr.png")}}" class="hr-img" alt="google plus TunisieBusiness"></a></li>
+<li class="display-icons">
+<a rel="external" title="Youtube" href="http://www.youtube.com/user/TunisieBusiness" target="_blank">
+<img src="{{asset("bundles/businessannuaire/images/icons/youtube.png")}}" alt="Youtube TunisieBusiness">
+<img src="{{asset("bundles/businessannuaire/images/icons/youtube-hr.png")}}" class="hr-img" alt="Youtube TunisieBusiness"></a></li>
+</ul>
+</div> <!--social network-->	        	
+</div> 
+<div itemscope itemtype="http://schema.org/Article" class="white-shape">
+<header>
+    
+	<div class="head-content">
+		<div style="float:left;margin: -123px 0px 0px -40px; width:300px;"><img src="{{asset("bundles/businessannuaire/images/annuaire_tunisie.png")}}" alt="annuaire tunisie" style=" width: 346px; height: 272px; " title="L’annuaire des professionnels Tunisiens"></div> <!--Title Site-->
+        <div class="menu">
+            <nav>
+            <ul class="sf-menu sf-js-enabled">
+            <li class="current"><a href="{{path('annuaire_homepage')}}">Accueil<span></span></a></li>
+            <li class=""><a href="{{path('annuaire_listannuaires')}}">Annuaire<span></span></a></li>
+            <li class=""><a href="{{path('annuaire_listannonces')}}">Annonces<span></span></a></li>
+            <li class=""><a href="{{path('annuaire_listpromotions')}}">Promotions<span></span></a></li>
+           
+            <li class=""><a href="{{path('annuaire_contact')}}">Contact<span></span></a></li>
+            </ul>
+            <div class="clear"></div>
+            </nav>
+            <div class="clear"></div>
+            </div> <!--Menu-->
+		<div class="logo">
+            <h1 style=" color: black; padding: 8px 0px 0px 100px; ">L’annuaire des professionnels Tunisiens</h1>
+            <p><span class="courch">Cour de jour :<br><strong style="color:black; font-size:12px;">1€ = 2,253 TND</strong></span></p>
+                    <div class="sliderkit photoslider-mini" style="width: 790px; height: 92px;position: absolute;margin: 14px 0px 0px 162px;">
+                        <div class="sliderkit-panels">
+                            <div class="sliderkit-panel">
+                                <a href="#" title="Annonce | TunisieBusiness"><img src="{{asset("bundles/businessannuaire/images/entete/votre-annonce.png")}}" alt="Annonce Tunisie Bussines" style=" width: 790px; height: 92px; "/></a>
+                            </div>
+                            
+                        </div>
+                    </div><!--photoslider-mini -->
+		</div> <!--Logo & pub entet-->
+		<div>
+
+</div> <!--table annonce top menu-->
+		<div class="clear"></div> <!--div clear-->
+	</div>
+	<div class="clear"></div> <!--div clear-->
+</header>
+<section id="content">
+	<div class="container_12">
+	<div class="grid_12"><div class="line-2"></div></div>	<!--line-->
+		<div class="grid_4">
+			<div>
+    			<div class="tabs"> 
+       				<div class="tab">
+           				<div class="content">
+							<form action="{{path('annuaire_search')}}" method="get">
+                  <div>
+                               <div style="color:white; font-size:16px;margin-bottom: 15px;float: left;">Trouvez facilement l’entreprise que vous recherchée</div>
+                               <div style="color:white; font-size:16px;margin-bottom: 15px;margin-left: 622px;"><a href="{{path('annuaire_registercompanypage')}}" title="Ajouter Votre Soci&eacute;t&eacute; au portail Tunisien | TunisieBusiness" style=" color: white; text-decoration:underline;">Inscrivez votre soci&eacute;t&eacute; gratuitement</a></div>
+                  </div>  
+               <div><strong style="color:white; font-size:16px;float: left;margin-right: 20px;">Qui, Quoi</strong></div>
+               <div><input name="motcle" id="motcle" type="text" style=" width: 30%; height: 20px; border-radius: 5px; float: left;"/></div>
+               <div><strong style="color:white; font-size:16px;margin-left: 40px;margin-right: 20px;float: left;">Où</strong></div>
+               <div><input name="local" id="local" type="text" style=" width: 30%; height: 20px; border-radius: 5px; float: left;"/></div>
+               <div><input name="rechercherinf" type="submit" value="Trouver" class="button_rech" style=" margin-left: 40px; "/></div>
+               <div><span style="content: '';position: absolute;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #fbb144;margin-left: 100px;margin-top: 2px;"></span></div>
+				<div><span style="content: '';position: absolute;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #fbb144;margin-left: 460px;margin-top: 2px;"></span></div>
+                <div style="color: #000;background-color: #fbb144;width: 255px;margin-left: 95px;margin-top: 10px;height: 24px;float:left;padding-left: 15px;">Ex: Centre d'appel, Architecte,...</div>
+                <div style="color: #000;background-color: #fbb144;width: 255px;margin-left: 88px;margin-top: 10px;height: 24px;float:left;padding-left: 15px;">Ex: Sousse, Tunis, Sfax,...</div>
+                </form>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div> <!--rechercheSoc-->
+	<div class="grid_12"><div class="line-2"></div></div>	<!--line--><!--include left-->
+
+        
+
+{%endblock%}
+   {%block body%}     
+{%endblock%} 
+        </div>
+    </section>
+{%block footer%}
+<footer>
+<a href="#" id="toTop" title="http://www.tunisie-business.net" style="margin: auto; right: 5%; display: inline;"><span id="toTopHover" style="opacity: -1;"></span></a>
+<div class="container_12">
+<div class="grid_12">
+<div class="line-2"></div>	<!--line-->
+
+
+<div class="box-mfooter">
+    <ul class="menu2">
+    <li><a href="{{path('annuaire_registerpage')}}" >Inscription</a></li>
+    <li><a href="{{path('annuaire_listannuaires')}}" >Annuaire</a></li>
+    <li><a href="{{path('annuaire_listannonces')}}" >Annonces</a></li>
+    <li><a href="{{path('annuaire_listpromotions')}}" >Promotions</a></li>
+    <li><a href="{{path('annuaire_registercompanypage')}}" >Espace Entreprise</a></li>
+    <li><a href="{{path('annuaire_contact')}}" >Contact</a></li>
+    
+    </ul>
+</div>
+
+<div class="line-footer"></div>	<!--line-->
+<p class="foot-textr">Recherche avancée sur Tunisie Business (Soci&eacute;t&eacute;, Annonce, Promotion, Actualit&eacute;,...)<br>
+
+<gcse:search></gcse:search>
+</p>
+<p class="foot-text">Copyright © 2013 Created By&nbsp;<a href="http://www.eurotech-web.com/" target="_blank" title="Euro Tech sarl">Euro Tech</a>&nbsp; </p>
+</div>
+<div class="clear"></div>
+</div>
+</footer>
+{%endblock%}
+</body>
+
+<!-- Mirrored from www.tunisie-business.net/index.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 14 Apr 2014 17:46:54 GMT -->
+</html>

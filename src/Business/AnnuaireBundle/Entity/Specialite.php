@@ -1,0 +1,185 @@
+<?php
+
+namespace  Business\AnnuaireBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Specialite
+ 
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Specialite
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="DatePublication", type="datetime")
+     */
+    private $datepublication;
+/**
+     * @var Domaine $domaine
+     *
+     * @ORM\ManyToOne(targetEntity="Business\AnnuaireBundle\Entity\Domaine")
+     */
+    private $domaine;
+    
+     /**
+* @ORM\OneToMany(targetEntity="Business\AnnuaireBundle\Entity\User",
+mappedBy="specialite")
+*/
+    private $societes;
+
+   
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->societes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->datepublication = new \DateTime('now');
+               
+        
+    }
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Specialite
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set datepublication
+     *
+     * @param \DateTime $datepublication
+     * @return Specialite
+     */
+    public function setDatepublication($datepublication)
+    {
+        $this->datepublication = $datepublication;
+
+        return $this;
+    }
+
+    /**
+     * Get datepublication
+     *
+     * @return \DateTime 
+     */
+    public function getDatepublication()
+    {
+        return $this->datepublication;
+    }
+
+    /**
+     * Set domaine
+     *
+     * @param \Business\AnnuaireBundle\Entity\Domaine $domaine
+     * @return Specialite
+     */
+    public function setDomaine(\Business\AnnuaireBundle\Entity\Domaine $domaine = null)
+    {
+        $this->domaine = $domaine;
+
+        return $this;
+    }
+
+    /**
+     * Get domaine
+     *
+     * @return \Business\AnnuaireBundle\Entity\Domaine 
+     */
+    public function getDomaine()
+    {
+        return $this->domaine;
+    }
+
+  
+    
+    public function __toString() {
+        return $this->getNom()
+        ;
+    }
+
+    /**
+     * Add societes
+     *
+     * @param \Business\AnnuaireBundle\Entity\User $societes
+     * @return Specialite
+     */
+    public function addSociete(\Business\AnnuaireBundle\Entity\User $societes)
+    {
+        $this->societes[] = $societes;
+
+        return $this;
+    }
+
+    /**
+     * Remove societes
+     *
+     * @param \Business\AnnuaireBundle\Entity\User $societes
+     */
+    public function removeSociete(\Business\AnnuaireBundle\Entity\User $societes)
+    {
+        $this->societes->removeElement($societes);
+    }
+
+    /**
+     * Get societes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSocietes()
+    {
+        return $this->societes;
+    }
+}

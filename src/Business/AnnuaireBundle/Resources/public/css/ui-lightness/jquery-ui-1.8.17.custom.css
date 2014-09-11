@@ -1,0 +1,54 @@
+#page-wrap {
+  width: 960px; 
+  margin: 100px auto;
+}
+
+    .tabs {
+      position: relative;   
+		width:940px;
+		height: 150px;
+		float: left;
+		clear: both;
+		font-family: Tahoma, Geneva, sans-serif;
+		color: black;
+    }
+    .tab {
+      float: right;
+    }
+    .tab label {
+      background: #eee; 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      margin-left: -1px; 
+      position: relative;
+      left: 1px; 
+    }
+    .tab [type=radio] {
+      display: none;   
+    }
+    .content {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      background: #9a0000;
+      right: 0;
+      bottom: 0;
+      padding: 20px;
+      border-radius: 15px; 
+	  box-shadow: 2px 2px 10px #888888;
+    }
+    [type=radio]:checked ~ label {
+		background:#a70909;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a70909", endColorstr="#cb1414"); /* Pour IE seulement et mode gradient à linear */
+		background: -webkit-gradient(linear, left top, left bottom, from(#a70909), to(#cb1414));
+		background: -webkit-linear-gradient(#a70909, #cb1414);
+		background: -moz-linear-gradient(#a70909, #cb1414);
+		background: -o-linear-gradient(#a70909, #cb1414); 
+		background: -ms-linear-gradient(#a70909, #cb1414); 
+		background: linear-gradient(#a70909, #cb1414);
+        border-bottom: 1px solid white;
+      /*z-index: 2;*/
+    }
+    [type=radio]:checked ~ label ~ .content {
+      z-index: 1;
+    }

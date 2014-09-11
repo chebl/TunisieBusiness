@@ -1,0 +1,7 @@
+<label><span>Sous Catégorie :</span>
+<select name="listsouscategoriesann" id="listsouscategoriesann" class="validate[required]"> 
+                           {%for cat in souscategorie %}
+                                   <option value="{{cat.id}}">{{cat.nom}}</option>
+                                {%endfor%}   
+             </select>              
+ 						

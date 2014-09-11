@@ -1,0 +1,123 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+
+{{parent()}}
+
+
+{%endblock%}
+
+{%block body%}
+
+<div class="grid_1"> 
+
+<div class="box-stand">
+<h4>Dernières Promotions</h4>
+<table style="width:100%;" class="tabsoc">
+
+
+  {%for prom in listpromotions %}
+  <tr><td style="width: 10%;"> <a href="{{path('annuaire_fichepromotion',{'id':prom.id})}}" title="">
+           {%if prom.path=="" %} 
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="" style="width:120px; height:60px;" />
+        </a>
+          {%else%}
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/uploads/promotions/images/")}}{{prom.path}}" alt="" style="width:120px; height:60px;" />
+        </a>      
+                 {%endif%} 
+              </td><td style="width: 60%;">
+            <a href="{{path('annuaire_fichepromotion',{'id':prom.id})}}" title=""><strong itemprop="name">{{prom.titre}}</strong></a>
+                <br>publier le : {{prom.datepublication|date('d/m/Y')}}
+                <br>Par : {{prom.promoteur.nomsociete}}              </td>   
+ </tr>
+{%endfor%}
+    
+    </table>
+</div>
+</fieldset>
+</form>
+</div>  <!--Annonce en Avant-->
+
+ <!--Annonce en Avant-->
+
+<div class="clear"></div> <!--Clear-->
+     
+
+
+<!--Listes Annonces-->
+    
+     
+
+</div> <!--End include left-->
+
+<!--include right-->
+<div class="grid_2">
+    
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+
+    <div class="clear"></div>
+</div> <!--Annonceurs-->
+
+<div class="box-pub">
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Carée-->
+<div class="box-pub2">
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+<!-- Place this tag where you want the widget to render. -->
+<div class="g-page" data-width="250" data-href="https://plus.google.com/105367995533699353729" data-showtagline="false" data-rel="publisher"></div>
+
+<!-- Place this tag after the last widget tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'fr'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '../apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+				<!-- Start photoslider-mini -->
+				<div class="sliderkit photoslider-maxi" style="width:252px;height:600px;">
+					<div class="sliderkit-panels">
+						
+
+						
+						<div class="sliderkit-panel">
+						
+                                                </div>
+						<div class="sliderkit-panel">
+								</div>
+					</div>
+				</div>
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Large-->
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+<div class="box-actualite fleft">
+
+</div> <!--Dérniers Promotions-->
+
+<div class="box-actualite fright">
+</div> <!--Dérniers annonces-->
+
+<div class="clear"></div>
+
+</div>
+
+{%endblock%}
+

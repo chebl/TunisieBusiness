@@ -1,0 +1,284 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+
+
+ 
+{%block body %}
+
+
+
+
+<div class="grid_1"> 
+<div class="box-stand vcard">
+<h4>Fiche de société :</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style=" border-bottom: 1px solid #000; ">
+      {#'societe'=>$societe,'longitude'=>$longitude,'latitude'=>$latitude #}
+      
+    <td colspan="5">Secteur {{societe.specialite.domaine}}</td>
+  </tr>
+  <tr>
+    <td style=" width: 30%; "><h8>Nom de la société :</h8></td>
+    <td class="fn org">{{societe.nomsociete}}</td>
+    <td>&nbsp;</td>
+    <td rowspan="2">
+        {%if societe.path=="" %} 
+                 <img src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="MHDINFO" style="float:right;box-shadow: 3px 3px 2px 0px; height:90px; width:180px;" />
+          {%else%}
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/uploads/logos/images/")}}{{societe.path}}" alt="" style="float:right;box-shadow: 3px 3px 2px 0px; height:90px; width:180px;" />
+        {%endif%}
+        </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><h8>Sp&eacute;cialit&eacute; g&eacute;n&eacute;rale :</h8></td>
+    <td>{{societe.specialite}}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><h8>Description :</h8></td>
+    <td colspan="3"> {{societe.description}}</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+      
+           
+    <td rowspan="2"><h8>Suivez-la société sur :</h8></td>
+    <td colspan="3" rowspan="2"><ul class="sharing-cl" id="texto">
+            {%if liensociaux is not null %}
+		      <li><a class="sh-mail"href="{{liensociaux.urlfb}}" target="_blank" >Facebook</a></li>
+      <li><a class="sh-feed"href="{{liensociaux.urlyoutube}}" target="_blank" >You tube</a></li>
+      <li><a class="sh-tweet"href="{{liensociaux.urltwitter}}" target="_blank" >Twitter</a></li>
+      <li><a class="sh-face"href="{{liensociaux.urlsiteweb}}" target="_blank" >Site web</a></li>
+      <li><a class="sh-su"href="{{liensociaux.urllinkedin}}" target="_blank" >LinkdIn</a></li>
+      <li><a class="sh-digg"href="{{liensociaux.urlgoogleplus}}" target="_blank" >Google+</a></li>
+       {%else %}
+      <li><a class="sh-mail"href="#" >Facebook</a></li>
+      <li><a class="sh-feed"href="#">You tube</a></li>
+      <li><a class="sh-tweet"href="#">Twitter</a></li>
+      <li><a class="sh-face"href="#">Site web</a></li>
+      <li><a class="sh-su"href="#">LinkdIn</a></li>
+      <li><a class="sh-digg"href="#" >Google+</a></li>
+      {%endif%}
+</ul></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div> <!--Fiche société-->
+
+<div class="box-stand">
+<table style="width:100%;" class="tabadr">
+  <tr>
+    <td colspan="6">Adresse de société : {{longitude}},{{latitude}} </td>
+  </tr>
+  <tr>
+    <td colspan="6"><div id="container">
+     
+        <div id="map_canvas" style="width:100%; height:300px; float:left;">
+           
+        </div>
+         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                                        <script type="text/javascript">
+                                                                                
+                                            function initialize() 
+                                            {
+                                                var geocoder  = new google.maps.Geocoder();
+                                                var map;
+                                              
+                                                var latlng = new google.maps.LatLng({{latitude}},{{longitude}});
+                                                var infowindow = new google.maps.InfoWindow();
+                                                var myOptions = { 
+                                                  zoom: 12,
+                                                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                };
+                                                
+                                                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                                                
+                                                geocoder.geocode( { 'location': latlng }, 
+                                                    function(results, status) {
+                                                              if (status == google.maps.GeocoderStatus.OK) 
+                                                              {
+                                                                map.setCenter(results[0].geometry.location);
+                                                                var marker = new google.maps.Marker({
+                                                                    map: map, 
+                                                                    position: results[0].geometry.location
+                                                                });                                                                                                
+                                                              } 
+                                                              else 
+                                                              {
+                                                                alert("Geocode was not successful for the following reason: " + status);
+                                                              }
+                                                    });
+                                              }
+                                                                                     
+                                              initialize();
+                                              
+                                        </script>     	   
+            
+            
+</div></td>
+    </tr>
+  <tr>
+    <td rowspan="3"><img src="images/address-icon1.png" alt="adresse" /></td>
+    <td>{{societe.nomsociete}}</td>
+    <td>&nbsp;</td>
+    <td rowspan="3"><img src="images/address-icon2.png" alt="informations" /></td>
+    <td>Tél : </td>
+    <td>{{societe.telephone}}</td>
+  </tr>
+  <tr>
+    <td class="adr">{{societe.adresse}}<br>{{societe.codepostal}}&nbsp;{{societe.ville}}</td>
+    <td>&nbsp;</td>
+    <td>GSM :</td>
+    <td class="tel">{{societe.telephone}}</td>
+  </tr>
+  <tr>
+    <td>{{societe.ville}} - Tunisie</td>
+    <td>&nbsp;</td>
+    <td>Fax :</td>
+    <td></td>
+  </tr>
+</table>
+</div> <!--Adresse société-->
+<div style="padding-top:10px;">
+<div class="box-stand">
+        <div class="wrap ">
+        				<h4>À découvrir</h4>
+                        <table style="width:100%;" class="tabsoc">
+                          <tr>
+                            <td>Produits de la société</td>
+                          </tr>
+                        </table>
+        				<!-- SLIDER -->				
+				<div id="home-slider" class="lof-slidecontent">
+					<!-- slider content --> 
+					<div class="main-slider-content" >
+					<ul class="sliders-wrap-inner">
+                            <li><img src="images/gallery/notfound.png" title="Pas de Produits pour le moment" alt="Produit non exist" /></li>					  </ul>  	
+					</div>
+					<!-- ENDS slider content -->
+					<!-- slider nav -->
+					<div class="navigator-content" style=" width: 600px; ">
+					  <div class="navigator-wrapper"><!--add-->
+					        <ul class="navigator-wrap-inner">
+                            					        </ul>
+					  </div>
+					  <div class="button-next">Suivant</div>
+					  <div  class="button-previous">Précédent</div>
+					  <!-- REMOVED TILL FIXED <div class="button-control"><span>STOP</span></div> -->
+					</div> 
+					<!-- slider nav -->
+                </div>
+        </div>
+    <div class="clear"></div>
+</div> <!--slide produits end-->
+<div class="box-stand">
+<h4>Contacter la société</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td>Vous Pouvez contacter la société a travers la formulaire suivant:</td>
+  </tr>
+</table>
+	<form id="pro_form1" method="post" action="{{path('contactsociete')}}">
+<fieldset>
+<br>
+<label><span style="float:left;">Nom :<strong style="color:red;">*</strong></span>
+<input class="validate[required]" type="text" name="nom" id="nom" style=" margin-left: 130px; "/>
+</label>
+<br>
+<input type="hidden" value="{{societe.email}}" name="destinataire">
+<label><span style="float:left;">Prénom :<strong style="color:red;">*</strong></span>
+<input class="validate[required]" type="text" name="prenom" id="prenom" style=" margin-left: 109px; "/>
+</label>
+<br>
+<label><span style="float:left;">E-mail :<strong style="color:red;">*</strong></span>
+<input class="validate[required,custom[email]]" type="text" name="email" id="email" style=" margin-left: 121px; "/>
+</label>
+<br>
+<label><span style="float:left;">Téléphone :</span>
+<input class="validate[required]" type="text" name="tel" id="tel" style=" margin-left: 100px; "/>
+</label>
+<br>
+<label><span style="float:left;">Message :<strong style="color:red;">*</strong></span>
+<textarea class="validate[required,length[10,500]]" name="msg" id="msg" style=" margin-left: 104px; "></textarea>
+</label>
+<div class="btns"><input name="send" id="submit" type="submit" value="Envoyer" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+</fieldset>
+</form>
+</div>
+</div>
+ <!--Formulaire pour contactez la société-->
+</div> <!--End include left-->
+
+<!--include right-->
+<div class="grid_2">
+    
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+
+    <div class="clear"></div>
+</div> <!--Annonceurs-->
+
+<div class="box-pub">
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Carée-->
+<div class="box-pub2">
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+<!-- Place this tag where you want the widget to render. -->
+<div class="g-page" data-width="250" data-href="https://plus.google.com/105367995533699353729" data-showtagline="false" data-rel="publisher"></div>
+
+<!-- Place this tag after the last widget tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'fr'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '../apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+				<!-- Start photoslider-mini -->
+				<div class="sliderkit photoslider-maxi" style="width:252px;height:600px;">
+					<div class="sliderkit-panels">
+						
+
+						
+						<div class="sliderkit-panel">
+						
+                                                </div>
+						<div class="sliderkit-panel">
+								</div>
+					</div>
+				</div>
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Large-->
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+<div class="box-actualite fleft">
+
+</div> <!--Dérniers Promotions-->
+
+<div class="box-actualite fright">
+</div> <!--Dérniers annonces-->
+
+<div class="clear"></div>
+
+</div>
+{%endblock%}

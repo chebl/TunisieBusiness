@@ -1,0 +1,70 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+{{parent()}}
+
+{%endblock%}
+
+{%block body%}
+<div class="grid_1"> 
+<div class="box-stand">
+
+<h4>Détails Promotions</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td colspan="2">&nbsp;</td>
+  </tr>
+   <tr style=" border-bottom: 1px solid black;">
+    <td>Promotion :</td>
+     <td>{{reponse.promotion.titre}}</td>  </tr>
+   <tr style=" border-bottom: 1px solid black;">
+    <td>Reçu le :</td>
+    <td>{{reponse.datepublication|date('d/m/Y H:i:s')}}</td>
+  </tr>
+   <tr style=" border-bottom: 1px solid black;">
+    <td>De la part :</td>
+    <td>{{reponse.nom}}&nbsp;{{reponse.prenom}}</td>
+  </tr>
+   <tr style=" border-bottom: 1px solid black;">
+    <td>Téléphone :</td>
+    <td>{{reponse.telephone}}</td>
+  </tr>
+   <tr style=" border-bottom: 1px solid black;">
+     <td style="width:20%;">Message :</td>
+    <td style="width:80%;">{{reponse.message}}</td>
+  </tr>
+  <tr>
+    <td colspan="2"><a href="{{path('annuaire_reppromotions')}}"><input name="retour" type="submit" value="Retour" class="button_rech" style=" float:right;"/>
+      </a></td>
+  </tr>
+</table>
+
+
+</div> <!--Détails Message Vu-->
+
+<div class="clear"></div>
+
+ <!--End include left-->
+
+ <!--liste annonces-->
+
+{#
+<div class="box-stand">
+<h4>Mes promotions</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td style="width:80%;">Titre</td>
+    <td style="width:10%;">Modifier</td>
+    <td style="width:10%;">Supprimer</td>
+  </tr>
+<tr><td style=" width:80%;">PC Portable</td><td style=" width:10%;text-align: center; "><a href="modifier-annonce.html?id=88"/><img src="{{asset("bundles/businessannuaire/images/edit.png")}}" style="width:24; height:24px;" /></a></td><td style=" width:10%;text-align: center; "><a href="monespace.html?act=det&be=88" class="ask"><img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td><tr><tr><td style=" width:80%;">PC Portable</td><td style=" width:10%;text-align: center; "><a href="modifier-annonce.html?id=89"/><img src="{{asset("bundles/businessannuaire/images/edit.png")}}" style="width:24; height:24px;" /></a></td><td style=" width:10%;text-align: center; "><a href="monespace.html?act=det&be=89" class="ask"><img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td><tr> </table>
+ <a href="ajouter-une-annonces.html"><input name="retour" type="button" class="button_es_pro marg5" value="D&eacute;poser une Annonce" style=" width: 180px; float: right; "/></a>
+</div> <!--liste annonces-->
+#}
+<!--Espace Pro annonceur-->
+<div class="clear"></div>
+<div class="clear"></div><div class="clear"></div>
+</div> <!--End include left-->
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+
+{%endblock%}{# empty Twig template #}

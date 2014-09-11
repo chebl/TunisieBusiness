@@ -1,0 +1,48 @@
+parameters:
+#    business_annuaire.example.class: Business\AnnuaireBundle\Example
+
+services:
+#    business_annuaire.example:
+#        class: %business_annuaire.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    business_annuaire.admin.user:
+        class: Business\AnnuaireBundle\Admin\UserAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\User, BusinessAnnuaireBundle:UserAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonceurs, label: Annonceur}
+
+    business_annuaire.admin.annonce:
+        class: Business\AnnuaireBundle\Admin\AnnonceAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Annonce, BusinessAnnuaireBundle:AnnonceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: Annonce}
+
+    business_annuaire.admin.categorie:
+        class: Business\AnnuaireBundle\Admin\CategorieAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Categorie, BusinessAnnuaireBundle:CategorieAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: Categorie}
+
+    business_annuaire.admin.contact:
+        class: Business\AnnuaireBundle\Admin\ContactAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Contact, BusinessAnnuaireBundle:ContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Contact, label: Contact}
+
+    business_annuaire.admin.specialite:
+        class: Business\AnnuaireBundle\Admin\SpecialiteAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Specialite, BusinessAnnuaireBundle:SpecialiteAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonceurs, label: Specialite}
+
+    business_annuaire.admin.domaine:
+        class: Business\AnnuaireBundle\Admin\DomaineAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Domaine, BusinessAnnuaireBundle:DomaineAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonceurs, label: Domaine}
+
+    business_annuaire.admin.promotion:
+        class: Business\AnnuaireBundle\Admin\PromotionAdmin
+        arguments: [~, Business\AnnuaireBundle\Entity\Promotion, BusinessAnnuaireBundle:PromotionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Promotion, label: Promotion}

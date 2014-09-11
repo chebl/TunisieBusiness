@@ -1,0 +1,95 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+{{parent()}}
+
+{%endblock%}
+
+{%block body%}
+<div class="grid_1"> 
+
+
+    <div class="box-stand">
+<h4>RÉPONSES À VOS ANNONCES</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td style="width:30%;">Reçu Le</td>
+    <td style="width:30%;">Par</td>
+    <td style="width:30%;">Message</td>
+    
+    <td style="width:30%;">Details</td>
+    
+    <td style="width:10%;">Supprimer</td>
+  </tr>
+  
+  {%set i=0%}
+  
+  {%for rep in reponses %}
+<tr><td style=" width:40%;">{{rep.datepublication|date('d/m/Y H:i:s')}}</td>
+    <td style=" width:20%;">{{rep.nom}} {{rep.prenom}} </td>
+    <td style=" width:20%;">{{rep.message}} </td>
+    
+    <td style=" width:30%;text-align: center; "><a href="{{path('annuaire_detailsrepannonces',{'id':rep.id})}}"/>
+        <img src="{{asset("bundles/businessannuaire/images/details.png")}}" style="width:24; height:24px;" /></a></td>
+        <td style=" width:10%;text-align: center; "><a href="{{path('annuaire_deleterepannonces',{'id':rep.id})}}" class="ask">
+                <img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td>
+{%set i=i+1%}
+</tr>
+{%endfor%}
+{%if i==0 %}
+  <tr>
+<td colspan="5" style="background-color: rgb(252, 233, 233); background-position: initial initial; background-repeat: initial initial;">
+<img src="{{asset('bundles/businessannuaire/images/icons/error.png')}}" alt="error"/>
+Il n' y a aucun message pour le moment!!!
+</td>
+</tr> 
+{%endif%}
+</table>
+
+</div> <!--liste annonces-->
+
+{#
+<div class="box-stand">
+<h4>Mes promotions</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td style="width:80%;">Titre</td>
+    <td style="width:10%;">Modifier</td>
+    <td style="width:10%;">Supprimer</td>
+  </tr>
+<tr><td style=" width:80%;">PC Portable</td><td style=" width:10%;text-align: center; "><a href="modifier-annonce.html?id=88"/><img src="{{asset("bundles/businessannuaire/images/edit.png")}}" style="width:24; height:24px;" /></a></td><td style=" width:10%;text-align: center; "><a href="monespace.html?act=det&be=88" class="ask"><img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td><tr><tr><td style=" width:80%;">PC Portable</td><td style=" width:10%;text-align: center; "><a href="modifier-annonce.html?id=89"/><img src="{{asset("bundles/businessannuaire/images/edit.png")}}" style="width:24; height:24px;" /></a></td><td style=" width:10%;text-align: center; "><a href="monespace.html?act=det&be=89" class="ask"><img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td><tr> </table>
+ <a href="ajouter-une-annonces.html"><input name="retour" type="button" class="button_es_pro marg5" value="D&eacute;poser une Annonce" style=" width: 180px; float: right; "/></a>
+</div> <!--liste annonces-->
+#}
+<!--Espace Pro annonceur-->
+<div class="clear"></div>
+<div class="clear"></div><div class="clear"></div>
+</div> <!--End include left-->
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+
+{%endblock%}{# empty Twig template #}

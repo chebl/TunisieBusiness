@@ -1,0 +1,127 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+
+{{parent()}}
+
+
+{%endblock%}
+
+{%block body%}
+
+
+<div class="grid_1"> 
+    <div class="box-stand">
+        {%if id>0%} 
+            <h4>Modifier une promotion</h4>
+        {%else%}
+            
+    <h4>Ajouter une promotion</h4>
+     {%endif%}
+    <table style="width:100%;" class="tabsoc">
+        <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+            <td>Veuillez bien remplire le formulaire ci-dessus :</td>
+        </tr>
+    </table>
+            <form id="pro_form1" method="post" action="" {{form_enctype(form)}} onsubmit="alert('promotion ajouté avec success !')">
+                <fieldset>
+        <br>
+        <label><span style="float:left;">{{form_label(form.nom)}}</span>
+        {#<input type="text" name="nom" id="nom" class="validate[required]" value="CHEBL" style=" margin-left: 138px; "/>#}
+                {{form_widget(form.nom,{'attr': {'id':'nom','class':'validate[required]','name':'nom','style':' margin-left: 138px;'}})}}
+        
+        </label>
+        <br>
+        <label><span style="float:left;">{{form_label(form.prenom)}}</span>
+        {#<input type="text" name="prenom" id="prenom" class="validate[required]" value="MAHMOUD" style=" margin-left: 117px; "/>#}
+             {{form_widget(form.prenom,{'attr': {'id':'prenom','class':'validate[required]','name':'prenom','style':' margin-left: 117px;'}})}}     
+        </label>
+        <br>
+        <label><span style="float:left;">{{form_label(form.titre)}}</span>
+        {#<input type="text" name="titreprom" id="titreprom" class="validate[required]" style=" margin-left: 62px; "/>#}
+         {{form_widget(form.titre,{'attr': {'id':'titreprom','class':'validate[required]','name':'titreprom','style':' margin-left: 62px;'}})}}        
+        </label>
+        <br>
+        <label><span style="float:left;">{{form_label(form.telephone)}}</span>
+        {#<input class="validate[required]" type="text" name="tel" id="tel" style=" margin-left: 99px; "/>#}
+           {{form_widget(form.telephone,{'attr': {'id':'tel','class':'validate[required]','name':'tel','style':' margin-left: 99px;'}})}}        
+                
+        </label>
+        <br>
+        {%if id>0%}
+        
+        <label><span style="float:left;">Image :</span>
+         <span  style="margin-left:180px;">
+        <img src="{{asset("bundles/businessannuaire/uploads/promotions/images/")}}{{entity.path}}" style="width:250px; height:250px;">
+         </span>
+        </label>
+        <br>
+       
+        <br>
+        <label><span style="float:left;">Modifier Photo</span>
+           {{form_widget(form.file,{'attr': {'id':'photo','class':'validate[required]','name':'photo','style':' margin-left: 130px;'}})}}        
+          </label>     
+        
+{%else%}    
+        <label>
+        
+                <span style="float:left;">{{form_label(form.file)}}</span>   
+           {{form_widget(form.file,{'attr': {'id':'photo','class':'validate[required]','name':'photo','style':' margin-left: 130px;'}})}}        
+          </label>     
+             {%endif%}
+        {#<input  name="photo" id="photo" type="file" class="validate[required]" style=" margin-left: 130px; "/>#}
+               
+         
+        <br>
+       
+        <label><span style="float:left;">{{form_label(form.description)}}</span>
+        {#<textarea class="validate[required,length[10,800]]" name="des" id="des" style=" margin-left: 94px;"> </textarea>#}
+            {{form_widget(form.description,{'attr': {'id':'des','class':'validate[required,length[10,800]]','name':'des','style':' margin-left: 94px;'}})}}        
+                
+        </label>
+        <br>
+        <div class="btns">
+             {%if id>0%}
+            <input name="send" id="submit" type="submit" value="Modifier" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+          {%else %}
+            <input name="send" id="submit" type="submit" value="Ajouter" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+        {%endif%}
+        <div class="clear"></div>
+        </fieldset>
+             {{form_rest(form)}}       
+        </form>
+    </div>	<!--inscription société-->
+<div class="clear"></div>  <!--Clear-->
+</div> <!--End include left-->
+<!--include right-->
+
+
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+
+{%endblock%}
+{# empty Twig template #}

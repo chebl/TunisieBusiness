@@ -1,0 +1,65 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+{{parent()}}
+
+{%endblock%}
+
+{%block body%}
+<div class="grid_1"> 
+
+
+    <div class="box-stand">
+<h4>Mes Promotions</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td style="width:80%;">Titre</td>
+    <td style="width:10%;">Modifier</td>
+    <td style="width:10%;">Supprimer</td>
+  </tr>
+  
+  {%for promotion in mespromotions %}
+<tr><td style=" width:80%;">{{promotion.titre}}</td><td style=" width:10%;text-align: center; "><a href="{{path('annuaire_promotion',{'id':promotion.id})}}"/>
+        <img src="{{asset("bundles/businessannuaire/images/edit.png")}}" style="width:24; height:24px;" /></a></td>
+        <td style=" width:10%;text-align: center; "><a href="{{path('annuaire_deletepromotion',{'id':promotion.id})}}" class="ask">
+                <img src="{{asset("bundles/businessannuaire/images/delete.png")}}" style="width:24; height:24px;"/></a></td>
+
+</tr>
+{%endfor%}
+</table>
+ <a href="{{path('annuaire_promotion')}}"><input name="retour" type="button" class="button_es_pro marg5" value="D&eacute;poser une Promotion" style=" width: 180px; float: right; "/></a>
+ 
+</div> <!--liste annonces-->
+
+<!--Espace Pro annonceur-->
+<div class="clear"></div>
+<div class="clear"></div><div class="clear"></div>
+</div> <!--End include left-->
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+
+{%endblock%}{# empty Twig template #}

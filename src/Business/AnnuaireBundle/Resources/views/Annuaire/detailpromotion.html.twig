@@ -1,0 +1,187 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+
+{{parent()}}
+
+
+{%endblock%}
+
+{%block body%}
+
+<div class="grid_1"> 
+<div class="box-stand">
+<h4>Promotion</h4>
+<table style="width:100%;" class="tabsuiv">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png); border-bottom:solid 1px #000;">
+    <td colspan="3">{{promotion.titre}}</td>
+    </tr>
+  <tr>
+    <td style="width:20%;">Titre :</td>
+    <td style="width:80%;">{{promotion.titre}}</td>
+    <td rowspan="5">
+         {%if promotion.path=="" %} 
+              
+            <a href="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" rel="prefetch"  title="{{promotion.titre}}">
+             <figure style="margin-right:10px;float: left;"><img src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" rel="prefetch" alt="{{promotion.title}}" style=" width: 200px; height: 250px; "></figure>   
+              </a>
+          {%else%}
+             
+              <a href="{{asset("bundles/businessannuaire/uploads/promotions/images/")}}{{promotion.path}}" rel="prefetch"  title="{{promotion.titre}}">
+        </a>   
+             <figure style="margin-right:10px;float: left;"><img src="{{asset("bundles/businessannuaire/uploads/promotions/images/")}}{{promotion.path}}" rel="prefetch" alt="{{promotion.titre}}" style=" width: 200px; height: 250px; "></figure>   
+            
+        {%endif%}
+               
+            </td>
+  </tr>
+  <tr>
+    <td>Publiée le :</td>
+    <td>{{promotion.datepublication|date('d/m/Y H:i:s')}}</td>
+  </tr>
+  <tr>
+    <td>Par :</td>
+    <td>{{promotion.nom}} {{promotion.prenom}}</td>
+  </tr>
+  <tr>
+    <td>Téléphone :</td>
+    <td>{{promotion.telephone}}</td>
+  </tr>
+  <tr>
+    <td>Description :</td>
+    <td> {{promotion.description}}</td>
+  </tr>
+</table>
+
+
+
+</div> <!--Annonce détails-->
+<div class="box-stand">
+<h4>Réserver cette promotion</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td>Vous pouvez réserver cette promotion à travers le formulaire suivant :</td>
+  </tr>
+</table>
+	<form id="pro_form1" method="post" action="{{path('annuaire_repondre_promotion')}}" onsubmit="alert('Message Envoyé')">
+<fieldset>
+<br>
+<label><span style="float:left;">Nom :</span>
+<input class="validate[required]" type="text" name="nom" id="nom" style=" margin-left: 138px; "/>
+</label>
+<br>
+<label><span style="float:left;">Prénom :</span>
+<input class="validate[required]" type="text" name="prenom" id="prenom" style=" margin-left: 117px; "/>
+</label>
+<br>
+<label><span style="float:left;">E-mail :</span>
+<input class="validate[required,custom[email]]" type="text" name="email" id="email" style=" margin-left: 129px; "/>
+</label>
+<br>
+<label><span style="float:left;">Téléphone :</span>
+<input class="validate[required]" type="text" name="tel" id="tel" style=" margin-left: 99px; "/>
+</label>
+<input type="hidden" value="{{promotion.promoteur.username}}" name="destinataire">
+<input type="hidden" value="{{promotion.titre}}" name="titre">
+
+<br>
+<label><span style="float:left;">Message :</span>
+<textarea class="validate[required,length[10,500]]" name="msg" id="msg" style=" margin-left: 112px; "></textarea>
+</label>
+<div class="btns"><input name="send" id="submit" type="submit" value="Envoyer" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+</fieldset>
+</form>
+</div> <!--Formulaire de reservation-->
+<div class="clear"></div>
+<div class="box-stand">
+<div class="fb-like" data-href="http://www.tunisie-business.net/annonce-erp-86.html" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div>
+<div class="fb-share-button" data-href="http://www.tunisie-business.net/annonce-erp-86.html" data-type="button" style=" margin: -2px 20px 0px 20px; "></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.tunisie-business.net/annonce-erp-86.html" data-via="TunisieBusiness" data-lang="fr">Tweeter</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+<div style=" margin-top: 10px; ">
+<div class="fb-comments" data-href="http://www.tunisie-business.net/annonce-erp-86.html" data-colorscheme="light" data-numposts="5" data-width="600"></div>
+</div> <!--Button like & Shared Article-->
+<div style="margin-top:2px;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Annonce 468 x 60 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width: 590px;height: 60px;border: solid 1px #000;"
+     data-ad-client="ca-pub-2668523252332800"
+     data-ad-slot="7232924170"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>	<!--Adsens-->
+ <!--Formulaire de reservation-->
+<div class="clear"></div>
+</div> <!--End include left-->
+<!--include right-->
+<div class="grid_2">
+    
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+
+    <div class="clear"></div>
+</div> <!--Annonceurs-->
+
+<div class="box-pub">
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Carée-->
+<div class="box-pub2">
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+<!-- Place this tag where you want the widget to render. -->
+<div class="g-page" data-width="250" data-href="https://plus.google.com/105367995533699353729" data-showtagline="false" data-rel="publisher"></div>
+
+<!-- Place this tag after the last widget tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'fr'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '../apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div> <!--FB like blocs-->
+<div class="box-pub2">
+				<!-- Start photoslider-mini -->
+				<div class="sliderkit photoslider-maxi" style="width:252px;height:600px;">
+					<div class="sliderkit-panels">
+						
+
+						
+						<div class="sliderkit-panel">
+						
+                                                </div>
+						<div class="sliderkit-panel">
+								</div>
+					</div>
+				</div>
+				<!-- // end of photoslider-mini -->
+	<div class="clear"></div>
+</div> <!--Bloc pub Large-->
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+<div class="box-actualite fleft">
+
+</div> <!--Dérniers Promotions-->
+
+<div class="box-actualite fright">
+</div> <!--Dérniers annonces-->
+
+<div class="clear"></div>
+
+</div>
+{%endblock%}

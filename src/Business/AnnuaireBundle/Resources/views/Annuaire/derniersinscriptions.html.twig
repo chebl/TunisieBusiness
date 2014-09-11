@@ -1,0 +1,27 @@
+<div class="box-stand">
+<h4>Dernières inscriptions</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr>
+    <td>Soci&eacute;t&eacute;</td>
+    <td>Adresse</td>
+    <td>Domaine d'activit&eacute;</td>
+  </tr>
+
+  {%for soc in listsocietes %}
+  <tr><td style="width: 10%;"> <a href="{{path('annuaire_fichesociete',{'id':soc.id})}}" title="">
+           {%if soc.path=="" %} 
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/images/logosoc/no-image.gif")}}" alt="" style="width:120px; height:60px;" />
+        </a>
+          {%else%}
+              <img itemprop="image" src="{{asset("bundles/businessannuaire/uploads/logos/images/")}}{{soc.path}}" alt="" style="width:120px; height:60px;" />
+        </a>      
+                 {%endif%} 
+              </td><td style="width: 60%;">
+            <a href="{{path('annuaire_fichesociete',{'id':soc.id})}}" title=""><strong itemprop="name">{{soc.nomsociete}}</strong>
+                <br>{{soc.adresse}} {{soc.codepostal}} {{soc.ville}}<br>T&eacute;l&eacute;phone : </a></td>   
+<td style="width: 30%;">{{soc.specialite}}</td>
+ </tr>
+{%endfor%}
+    
+    </table>
+</div> 

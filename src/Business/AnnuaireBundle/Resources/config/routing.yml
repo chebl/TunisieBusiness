@@ -1,0 +1,159 @@
+annuaire_homepage:
+    pattern:  /index
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:index }
+
+annuaire_home:
+    pattern:  /
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:index }
+        
+annuaire_registerpage:
+    pattern:  /register
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:register }    
+
+
+annuaire_registercompanypage:
+    pattern:  /registercompany
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:registercompany }    
+
+annuaire_fichesociete:
+    pattern:  /fichesociete/{id}
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:fiche }   
+
+annuaire_editpage:
+    pattern:  /editsoc
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:infossociete }    
+
+annuaire_socialnetwork:
+    pattern:  /editsocialnet
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:socialnetworkcompany }  
+
+annuaire_listannonces:
+    pattern:  /annonces
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:listannonces }  
+annuaire_ficheannonce:
+   pattern:  /detailannonce/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Annuaire:ficheannonce } 
+
+annuaire_listannuaires:
+    pattern:  /annuaires
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:listannuaires }  
+
+
+annuaire_fichepromotion:
+   pattern:  /detailpromotion/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Annuaire:fichepromotion } 
+
+annuaire_listpromotions:
+    pattern:  /promotions
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:listpromotions } 
+
+annuaire_promotion:
+    pattern:  /promotion/{id}
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:ajoutpromotion,id: 0 }  
+
+annuaire_mespromotions:
+    pattern:  /mes-promotions
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:mespromotions }  
+
+annuaire_deletepromotion:
+    pattern:  /deletepromotion/{id}
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:deletepromotion }    
+annuaire_contact:
+    pattern:  /contact
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:contact }  
+
+
+
+annuaire_search:
+    pattern:  /search
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:search }   
+
+
+annuaire_mescoordonness:
+    pattern:  /mesinfos
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:mesinfos }    
+
+annuaire_ajoutannonce:
+    pattern:  /ajoutannonce
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:ajoutannonce }    
+
+annuaire_editannonce:
+    pattern:  /editannonce/{id}
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:editannonce }    
+
+annuaire_deleteannonce:
+    pattern:  /deleteannonce/{id}
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:deleteannonce }    
+
+annuaire_monespace:
+    pattern:  /monespace
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:monespace }    
+
+
+annuaire_souscategories:
+    pattern:  /souscategorie
+    defaults: { _controller: BusinessAnnuaireBundle:Profil:sousCategorie }           
+
+annuaire_specialites:
+    pattern:  /specialite
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:specialite }           
+
+          
+annuaire_aboutpage:
+    pattern:  /about
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:about }
+
+annuaire_contactpage:
+    pattern:  /contact
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:contact }
+
+annuaire_sitemappage:
+    pattern:  /sitemap
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:sitemap }
+
+annuaire_productpage:
+    pattern:  /product
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:product }
+    
+annuaire_cartpage:
+    pattern:  /cart
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:cart }
+    
+annuaire_categorypage:
+    pattern:  /category
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:category }
+
+annuaire_articlepage:
+    pattern:  /article
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:article }
+annuaire_repondre_annonce:
+    pattern:  /repondre
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:repondreannonce }  
+annuaire_repondre_promotion:
+    pattern:  /repondrepromo
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:repondrepromotion }
+rechercheannonces:
+    pattern:  /resannonces
+    defaults: { _controller: BusinessAnnuaireBundle:Annuaire:rechecheannonce }  
+contactsociete:
+   pattern:  /contactersoc
+   defaults: { _controller: BusinessAnnuaireBundle:Annuaire:contactsociete } 
+annuaire_reppromotions:
+   pattern:  /reppromotions
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:reppromotions }
+annuaire_repannonces:
+   pattern:  /repannonces
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:repannonces }
+  
+annuaire_deleterepprom:
+   pattern:  /deleterepprom/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:deleterepprom }
+annuaire_deleterepannonces:
+   pattern:  /deleterepannonce/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:deleterepannonce }
+annuaire_detailsrepannonces:
+   pattern:  /detailsrepannonce/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:detailsrepannonce }
+annuaire_detailsreppromotions:
+   pattern:  /detailsreppromotions/{id}
+   defaults: { _controller: BusinessAnnuaireBundle:Profil:detailsreppromotion }   

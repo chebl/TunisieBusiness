@@ -1,0 +1,404 @@
+<?php
+namespace  Business\AnnuaireBundle\Entity;
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Business\AnnuaireBundle\Entity\CompanyRepository")
+ * @ORM\Table(name="company")
+ * HasLifecycleCallbacks
+ */
+class Company extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+/**
+     * @var string
+     *
+     * @ORM\Column(name="nomsociete", type="string", length=50,nullable=true)
+     
+     */
+    
+    private $nomsociete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text",nullable=true)
+     
+     */
+    
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=50,nullable=true)
+     
+     */
+    
+    
+    
+    private $adresse;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codepostal", type="string", length=50,nullable=true)
+     
+     */
+    
+    private $codepostal;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=50,nullable=true)
+     
+     */
+    
+    private $telephone;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=50,nullable=true)
+     
+     */
+    
+    private $ville;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     */
+    private $path;
+      /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="dateinscription", type="datetime")
+     */
+    private $dateinscription;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Business\AnnuaireBundle\Entity\Specialite",inversedBy="societes")
+     */
+    private $specialite;
+
+
+
+    
+     //les 4 fonctions suivantes sont pour le upload
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+     
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+     
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__.'/../../../../web/bundles/businessannuaire/'.$this->getUploadDir();
+    }
+     
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
+        return 'uploads/logos/images';
+    }
+     
+    // **** les 3 fonctions suivantes servent à gérer le callback et l'upload de file
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        var_dump($this->file);
+         
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->path = uniqid().'.'.$this->file->guessExtension();
+        }
+    }
+    
+     
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+          
+        // ** on peut mettre ça si on veut faire que le nom corresponde au nom de l'image original
+        //$this->setName($this->file->getClientOriginalName());
+     
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        //$this->file->move($this->getUploadRootDir(), $this->path);
+     $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+     $this->path = $this->file->getClientOriginalName(); 
+     $this->file = null;
+    }
+     
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
+
+    
+    
+    
+     public function __construct()
+    {
+        $this->dateinscription = new \DateTime();
+    }
+   
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomsociete
+     *
+     * @param string $nomsociete
+     * @return company
+     */
+    public function setNomsociete($nomsociete)
+    {
+        $this->nomsociete = $nomsociete;
+
+        return $this;
+    }
+
+    /**
+     * Get nomsociete
+     *
+     * @return string 
+     */
+    public function getNomsociete()
+    {
+        return $this->nomsociete;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     * @return company
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string 
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set codepostal
+     *
+     * @param string $codepostal
+     * @return company
+     */
+    public function setCodepostal($codepostal)
+    {
+        $this->codepostal = $codepostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codepostal
+     *
+     * @return string 
+     */
+    public function getCodepostal()
+    {
+        return $this->codepostal;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return company
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set specialite
+     *
+     * @param \Business\AnnuaireBundle\Entity\Specialite $specialite
+     * @return company
+     */
+    public function setSpecialite(\Business\AnnuaireBundle\Entity\Specialite $specialite = null)
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * Get specialite
+     *
+     * @return \Business\AnnuaireBundle\Entity\Specialite 
+     */
+    public function getSpecialite()
+    {
+        return $this->specialite;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return company
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set dateinscription
+     *
+     * @param \DateTime $dateinscription
+     * @return company
+     */
+    public function setDateinscription($dateinscription)
+    {
+        $this->dateinscription = $dateinscription;
+
+        return $this;
+    }
+
+    /**
+     * Get dateinscription
+     *
+     * @return \DateTime 
+     */
+    public function getDateinscription()
+    {
+        return $this->dateinscription;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Company
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     * @return Company
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string 
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+}

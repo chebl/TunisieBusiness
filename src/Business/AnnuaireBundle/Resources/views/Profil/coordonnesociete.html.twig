@@ -1,0 +1,191 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+<!--Form Validator-->
+
+{{parent()}}
+
+
+{%endblock%}
+
+{%block body%}
+<div class="grid_1"> 
+
+<div class="box-stand">
+<h4>Connexion</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div style=" margin-top: 10px; ">
+<p style="text-align:justify; color:#000;">
+Vous désirez déposée une annonce gratuitement, rien de plus facile ! Vous devez évidement  être 
+inscrit, si ce n’est pas le cas complétez les champs ci-dessous « Créer mon compte ».</p>
+<p style="text-align:justify; color:#000;margin-top: 10px;">Si vous êtes déjà inscrit, connectez vous à votre compte et choisissez la rubrique dans laquelle vous 
+désirez poster une annonce, remplissez ensuite tous les champs de votre annonce et cliquez sur poster. 
+Votre annonce sera envoyée à notre service modération pour validation et sera publiée prochainement. 
+</p>
+</div>
+<div class="wrap " style=" box-shadow: 2px 2px 10px #888888; margin-top:20px;">
+<form method="post" id="rech_form">
+<table style="width:100%; height:164px;" class="tabinsc">
+  <tr>
+    <td colspan="2"><span style="color:#8c0101; text-transform:uppercase;font-weight: bold;font-size: 14px;">Pour Poster une annonce, connectez vous :</span></td>
+    </tr>
+  <tr>
+    <td>E-mail :</td>
+    <td><input class="validate[required,custom[email]]" name="email" id="email" type="text" value=""/></td>
+  </tr>
+  <tr>
+    <td>Mot de passe</td>
+    <td><input class="validate[required]" name="password" id="password" type="password"/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input name="signup" type="submit" value="Connexion" class="button_rech" style=" float: left; " /><p style=" margin: 8px 8px; "><a href="mot-de-passe-oublie.html">Mot de passe oublier ?</a></p></td>
+  </tr>
+</table>
+     </form>   
+</div>
+<div class="clear"></div>
+</div>
+
+    <div class="box-stand">
+<form id="pro_form1" method="post" action="{{path('annuaire_editpage')}}" style="box-shadow: 2px 2px 10px #888888;" {{form_enctype(form)}}>
+
+
+<span style="color:#8c0101; text-transform:uppercase;font-weight: bold;font-size: 14px;">Pas encore inscrit ?</span>
+<table style="width:100%;" class="tabsoc">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png);">
+    <td>Inscrivez-vous, confirmer votre inscription et profiter de nos services</td>
+  </tr>
+</table>
+<fieldset>
+<br>
+<label><span style=" float: left; ">{{form_label(form.nomsociete)}}</span>
+{#<input class="validate[required]" type="text" name="nom" id="nom" style=" margin-left: 173px; " value=""/>#}
+ {{form_widget(form.nomsociete,{'attr': {'class': 'validate[required]','style':'margin-left: 173px;','id':'nom'}})}}  
+</label>
+<br>
+<label><span style=" float: left; ">{{form_label(form.email)}}</span>
+{#<input class="validate[required,custom[email]]" type="text" name="email" id="email" style=" margin-left: 164px; " value=""/>#}
+{{form_widget(form.email,{'attr': {'class': 'validate[required,custom[email]]','style':'margin-left: 164px;','id':'email','name':'email'}})}} 
+
+</label>
+<br>
+<label><span style=" float: left; ">{{form_label((form.plainPassword.first))}}</span>
+{#<input class="validate[required,length[6,25]]" type="password" name="passwor" id="passwor" style=" margin-left: 115px; "/>#}
+{{form_widget(form.plainPassword.first,{'attr': {'class': 'validate[required,length[6,25]]','style':'margin-left: 115px;','id':'passwor'}})}} 
+
+    </label>
+<br>
+<label><span style=" float: left; ">{{form_label((form.plainPassword.second))}}</span>
+{#<input class="validate[required,confirm[passwor],length[6,25]]" type="password" name="confirmpassword" id="confirmpassword" style=" margin-left: 22px; "/>#}
+{{form_widget(form.plainPassword.second,{'attr': {'class': 'validate[required,confirm[passwor],length[6,25]]','style':'margin-left: 22px;','id':'confirmpassword'}})}} 
+        
+</label>
+
+<br>
+<label><span style=" float: left; ">Recopier le code de sécurité :</span>
+<input class="validate[required]" name="in_code" type="text" id="in_code" size="12" style=" width: 128px; margin-left: 14px; "> &nbsp;
+    	<img src="{{asset("bundles/businessannuaire/includes/captcha/captcha_code_file7052.jpg?rand=2079080691")}}" id='captchaimg' />
+</label>
+<br>
+<label>
+<input name="certifier" id="certifier" type="checkbox" class="validate[required]" style="float: left;"/><p style=" margin-left: 22px; color: black; ">Je certifie que les donn&eacute;es ci-dessus sont exactess et r&eacute;elles</p>
+</label>
+<div class="clear"></div>
+</fieldset>
+
+
+
+<h4>Mes coordonnées</h4>
+
+<fieldset>
+<br>
+<label><span>{{form_label(form.adresse)}}</span>
+{#<input type="text" name="adresee" id="adresee"  value="Sousse" class="validate[required]"/>#}
+{{form_widget(form.adresse,{'attr': {'class': 'validate[required]','id':'adresee','name':'adresse'}})}} 
+
+</label>
+<br>
+<label><span>{{form_label(form.codepostal)}}</span>
+{#<input type="text" name="codp" id="codp" value="4023" /> #}
+{{form_widget(form.codepostal,{'attr': {'id':'codp','name':'codp'}})}} 
+
+</label>
+<br>
+<label><span>{{form_label(form.ville)}}</span>
+{#<input type="text" name="ville" id="ville" value="Sousse" class="validate[required]"/>#}
+{{form_widget(form.ville,{'attr': {'id':'ville','name':'ville','class':'validate[required]'}})}} 
+
+</label>
+<br>
+<label><span>{{form_label(form.telephone)}}</span>
+{#<input type="text" name="tel" id="tel" value="20 596 212"/>#}
+{{form_widget(form.telephone,{'attr': {'id':'tel','name':'tel'}})}} 
+
+</label>
+<br>
+<label><span>Domaine société :</span>
+
+<select name="domainetab" id="domainesoc" class="validate[required]" onchange="return remplirspecialite(document.getElementById('domainesoc').value,$('#speccat'));">
+        <option value="nothing">--Choisir un domaine--</option>
+    {%for domaine in domaines%}
+        <option value="{{domaine.id}}">{{domaine.nom}}</option>
+{%endfor%}
+
+    </select>
+</label>
+<div id="speccat">
+</div>
+<br>
+<label><span>{{form_label(form.file)}}</span>
+{{form_widget(form.file,{'attr': {'id':'logo'}})}} 
+
+</label>
+<br>
+<label><span>{{form_label(form.description)}}</span>
+{{form_widget(form.description,{'attr': {'id':'des','name':'des'}})}} 
+
+</label>
+<br>
+<div class="btns"><input name="modifcorsoc" id="submit" type="submit" value="Inscrire" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+<div class="clear"></div>
+</fieldset>
+{{form_rest(form)}}
+
+</form>
+</div>
+
+</div> <!--End include left-->
+
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+
+<!--include right-->
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+{%endblock%}

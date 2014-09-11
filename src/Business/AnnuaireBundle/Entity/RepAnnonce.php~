@@ -1,0 +1,73 @@
+<?php
+
+namespace  Business\AnnuaireBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * @ORM\Entity(repositoryClass="Business\AnnuaireBundle\Entity\RepAnnonceRepository")
+ * @ORM\Table(name="reponsesannonces")
+ * HasLifecycleCallbacks
+ */
+
+class RepAnnonce
+{
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string",length=255)
+     */
+  private $nom;
+   /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string",length=255)
+     */
+  private $prenom;
+  /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string",length=255)
+     */
+private $email;
+
+/**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string",length=255,nullable=true)
+     */
+  private $telephone;
+
+/**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="string",length=255,nullable=true)
+     */  private $message;
+ 
+   /**
+     *
+     * @ORM\ManyToOne(targetEntity="Business\AnnuaireBundle\Entity\User",inversedBy="reponsesannonces")
+     */
+    private $annonceur;
+   /**
+     *
+     * @ORM\ManyToOne(targetEntity="Business\AnnuaireBundle\Entity\Annonce",inversedBy="reponses")
+     */
+    private $annonce;
+
+    
+/**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datepublication", type="datetime")
+     */
+    private $datepublication;
+ 
+}

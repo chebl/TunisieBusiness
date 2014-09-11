@@ -1,0 +1,157 @@
+{% extends 'BusinessAnnuaireBundle::layout.html.twig' %}
+{%block javascript%}
+{{parent()}}
+{%endblock%}
+
+{%block login%}
+
+ {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+<div id="loginContainer">
+		        <a href="#" id="loginButton" title="cr&eacute;r une compte tunisie business"><span style="min-width: 80px;">
+       {{ app.user.nom }} </span><em></em></a>
+        <div style="clear:both"></div>
+        <div id="loginBox">           
+            
+   <ul id="loginForm">
+<fieldset id="body">
+<li style="font-size: 18px; border: 1px solid; border-radius: 4px; text-align: center;">
+<a title="mon espace pro tunisie business" href="{{path('annuaire_mescoordonness')}}">Mon Compte</a>
+</li>
+<li style="font-size: 18px; border: 1px solid; border-radius: 4px; text-align: center;">
+<a title="Ajouter une annonce | TunisieBusiness" href="{{path('annuaire_ajoutannonce')}}">Ajouter annonce</a>
+</li>
+<li style="font-size: 18px; border: 1px solid; border-radius: 4px; text-align: center;">
+<a title="Mes messages reçus | TunisieBusiness" href="mes-messages-recu.html">Message récu</a>
+</li>
+<li style="font-size: 18px; border: 1px solid; border-radius: 4px; text-align: center;">
+<a title="Déconnexion | TunisieBusiness" href="{{path('fos_user_security_logout')}}">Déconnexion</a>
+</li>
+</fieldset>
+</ul>
+        </div>
+</div>
+
+
+{%else%}
+ <div id="loginContainer">
+		        <a href="#" id="loginButton" title="cr&eacute;r une compte tunisie business"><span style="min-width: 80px;">
+        Connexion</span><em></em></a>
+        <div style="clear:both"></div>
+        <div id="loginBox">           
+            <form id="loginForm"  action="{{ path("fos_user_security_check") }}" method="post">
+	      <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <fieldset id="body">
+                        <fieldset>
+                            <label for="email">Email</label>
+                            <input type="text" name="_username" id="email" class="validate[required,custom[email]]" value="{{ last_username }}"/>
+                        </fieldset>
+                        <fieldset>
+                            <label for="password">Mot de Passe</label>
+                            <input type="password" name="_password" id="password" class="validate[required]"/>
+                        </fieldset>
+                        <fieldset>
+                                                </fieldset> 
+                        <input type="submit" name="login" id="login" value="Connexion" />
+                    </fieldset>
+                    <span><a href="{{path('annuaire_registerpage')}}" title="">Cr&eacute;er un compte</a></span><span><a href="#" title="R&eacute;cuperer mon mot de passe | TunisieBusiness">Mot de passe oubli&eacute; ?</a></span>
+                </form>	<!--Formulaire inscription-->
+        	</div>
+</div>
+{%endif%}
+{%endblock%}
+
+
+
+
+{%block body%}
+
+<div class="grid_1"> 
+<div class="box-stand">
+<h4>Modifier une annonce</h4>
+<table style="width:100%;" class="tabsoc">
+  <tr style="background:url(css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png); border-bottom:solid 1px #000;">
+    <td>Veuillez bien remplire le formulaire ci-dessus :</td>
+  </tr>
+</table>
+<form id="pro_form1" method="post" action="{{path('annuaire_editannonce',{'id':id})}}" {{form_enctype(form)}}>
+<fieldset>
+<br>
+<label><span>{{form_label(form.titre)}}</span>
+{#<input type="text" name="titreann" id="titreann" class="validate[required]" value=""/>#}
+{{form_widget(form.titre,{'attr': {'class': 'validate[required]','id':'titreann','name':'titreann'}})}} 
+</label>
+<label><span>Catégorie :</span>
+<select name="categann" id="categannonce" class="validate[required]" onchange="return remplirsouscategorie(document.getElementById('categannonce').value,$('#souscategoriesann'));" >
+	<option value="" >-----Choix-----</option>
+        {%for cat in categories %}
+        <option value="{{cat.id}}">{{cat.nom}}</option>
+        {%endfor%}
+       
+
+</select>
+</label>
+<div id="souscategoriesann"></div>
+
+<label><span>{{form_label(form.dureevalidite)}}</span>
+   {# <select size="1" name="duree" id="duree" class="validate[required]"></select>#}
+    {{form_widget(form.dureevalidite,{'attr': {'class': 'validate[required]','id':'duree','size':'1','name':'duree'}})}} 
+</label>
+<label><span>{{form_label(form.prix)}}</span>
+{#<input type="text" name="prix" id="prix" value=""/>#}
+       {{form_widget(form.prix,{'attr': {'id':'prix','name':'prix'}})}} 
+</label>
+<label><span>{{form_label(form.lieu)}}</span>
+    {{form_widget(form.lieu,{'attr': {'id':'lieu','name':'lieu','class':'validate[required]','size':'1'}})}} 
+         
+
+</label>
+<label><span>{{form_label(form.file)}}</span>
+		<table id='myTable'><tbody><tr id="fileRow_0">
+					<!--<td>File 1</td>-->
+					<td>
+                                        {{form_widget(form.file,{'attr': {'id':'file_0','name':'upFile[]'}})}} 
+                                        </td>
+					
+				 </tr></tbody></table></label>
+<label><span>{{form_label(form.description)}}</span>
+{#<textarea class="validate[required,length[10,800]]" name="des" id="des"> </textarea>#}
+ {{form_widget(form.description,{'attr': {'id':'des','name':'des','class':'validate[required,length[10,800]]'}})}} 
+</label>
+<div class="btns"><input name="send" id="submit" type="submit" value="D&eacute;poser" style=" cursor: pointer; float: right; height: 30px; text-decoration:none; font-family: 'Open Sans Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:14px; line-height:17px; border-radius:3px; display:inline-block; -webkit-transition:all 0.2s ease; -moz-transition:all 0.2s ease; -o-transition:all 0.2s ease; transition:all 0.2s ease;margin-bottom: 10px; " /><div class="clear"></div></div>
+<div class="clear"></div>
+</fieldset>
+        {{form_rest(form)}}
+</form>
+</div> <!--Ajouter une annonce-->
+<div class="clear"></div>
+<div class="clear"></div><div class="clear"></div>
+</div> <!--End include left-->{# empty Twig template #}
+{%include 'BusinessAnnuaireBundle:Profil:sidebar.html.twig' %}
+<div class="grid_2">
+
+<!--Pub right Annonceurs-->
+<div class="box-stand">
+<div class="clear"></div>
+</div> <!--Annonceurs-->
+
+</div> <!--FB like blocs-->
+
+</div> <!--End include right-->
+
+<div class="clear"></div> <!--Clear-->
+
+</div>
+</section>
+       
+<div class="line-2"></div>	<!--line-->
+<div class="container_12">
+
+
+
+<div class="clear"></div>
+</div>
+
+
+
+{%endblock%}
